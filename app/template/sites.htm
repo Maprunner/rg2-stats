@@ -1,0 +1,25 @@
+<div class="container">
+</p>
+<div class="panel panel-primary">
+  <div class="panel-heading">RG2 sites</div>
+  <div class="panel-body">
+  <table id='rg2-sites-table' class='display'><thead>
+  <tr><th>Club</th><th>Country</th><th>Events</th><th>Courses</th><th>Results</th><th>Routes</th><th>Latest event</th><th>Date</th></thead></tr>
+  <tbody>
+  <repeat group="{{ @sites }}" value="{{ @site }}">
+    <tr>
+    <td><a href="{{ @site.link }}" target="_blank">{{ @site.club }}</a></td>
+    <td>{{ @site.country }}</td>
+    <td>{{ @site.events }}</td>
+    <td>{{ @site.courses }}</td>
+    <td>{{ @site.results }}</td>
+    <td>{{ @site.routes }}</td>
+    <td><a href="{{ @site.link }}#{{ @site.latesteventid }}" target="_blank">{{@site.latesteventname}}</a></td>
+    <td>{{ @site.latesteventdate }}</td>
+    </tr>
+  </repeat>
+  </tbody>
+  </table>
+  </div>
+</div>
+</div>

@@ -1,0 +1,31 @@
+<div class="footer">
+<footer class="container">
+  <div class="row">
+    <div class="col-md-4">
+      <h3>Statistics</h3>
+      <p>Last updated {{@stats[0].updated}}</p>
+        <div class="well well-sm">Sites: {{@stats[0].sites}}</div>
+        <div class="well well-sm">Events: {{@stats[0].events}}</div>
+    </div>
+    <div class="col-md-4">
+      <h3></h3>
+        <div class="well well-sm">Courses: {{@stats[0].courses}}</div>
+        <div class="well well-sm">Results: {{@stats[0].results}}</div>
+        <div class="well well-sm">Routes: {{@stats[0].routes}}</div>
+    </div>
+    <div class="col-md-4">
+      <h3>About</h3>
+      <p>Routegadget is a web-based tool that allows you to draw or upload the route that you took at an orienteering event and compare it with other people.
+      	This site provides a summary of RG2 installations. The RG2 software is free and open source. For further details see the
+      	<a href="https://github.com/Maprunner/rg2">Github site</a>.</p>
+      <p>Copyright © 2015 <a href="http://www.maprunner.co.uk">Maprunner</a>.</p>
+    </div>
+  </div>
+</footer>
+</div>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.4/js/jquery.dataTables.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<script src="js/rg2-stats.js"></script>
+</body>
+</html>

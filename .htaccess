@@ -1,0 +1,12 @@
+Options +FollowSymLinks -MultiViews
+
+RewriteEngine On
+RewriteBase /rg2-stats/
+
+# ignore existing files
+RewriteCond %{REQUEST_FILENAME} !-f
+# ignore existing directories
+RewriteCond %{REQUEST_FILENAME} !-d
+# ignore existing symbolic links
+RewriteCond %{REQUEST_FILENAME} !-l
+RewriteRule .* index.php [L,QSA]

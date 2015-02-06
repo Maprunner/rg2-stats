@@ -1,0 +1,18 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+<title>RG2 Latest Events</title>
+<link>{{@REALM}}</link>
+<description>Latest events created in Routegadget 2</description>
+<lastBuildDate>{{date('r')}}</lastBuildDate>
+<language>en-gb</language>
+<atom:link href="{{@REALM}}" rel="self" type="application/rss+xml" />
+<repeat group="{{@events}}" value="{{@event}}">
+<item>
+<title>{{@event.name}}</title>
+<pubDate>{{date('r', strtotime(@event.date))}}</pubDate>
+<description><![CDATA[ {{@event.name}} organised by {{@event.club}} on {{@event.date}}.]]></description>
+<guid>{{@event.link}}/#{{@event.eventid}}</guid>
+</item>
+</repeat>
+</channel>
+</rss>

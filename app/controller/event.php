@@ -29,7 +29,7 @@ public function getEventList($f3) {
     $ev['date'] = $event->date;
     $ev['name'] = $event->name;
     $ev['country'] = $event->country;
-    $ev['eventid'] = $event->eventid;
+    $ev['hasheventid'] = $event->hasheventid;
     $ev['link'] = $event->link;
     $ev['results'] = $event->results;
     $ev['courses'] = $event->courses;
@@ -46,15 +46,20 @@ public function getEventList($f3) {
 }
 
 
-public function getEventRSS($f3) {
+public function getEventRSS($f3, $args) {
   $db_file = $f3->get('db_file');
   $db_type = $f3->get('db_type');
   $db = new DB\SQL($db_type.':'.$db_file);
   $event = new DB\SQL\Mapper($db, 'events');
   $event->club = 'SELECT club FROM sites WHERE events.siteid=sites.id';
+  $event->abbr = 'SELECT abbr FROM sites WHERE events.siteid=sites.id';
   $event->link = 'SELECT link FROM sites WHERE events.siteid=sites.id';
   $event->country = 'SELECT country FROM sites WHERE events.siteid=sites.id';
-  $event->load(array(), array('order'=>'date DESC', 'limit'=>10));
+  if (isset($args['club'])) {
+    $event->load(array("abbr=?", $args['club']), array('order'=>'date DESC', 'limit'=>10));
+  } else {
+    $event->load(array(), array('order'=>'date DESC', 'limit'=>10));
+  }
   
   $eventdata = array();
   $ev = array();
@@ -62,7 +67,7 @@ public function getEventRSS($f3) {
     $ev['date'] = $event->date;
     $ev['name'] = $event->name;
     //$ev['country'] = $event->country;
-    $ev['eventid'] = $event->eventid;
+    $ev['hasheventid'] = $event->hasheventid;
     $ev['link'] = $event->link;
     //$ev['results'] = $event->results;
     //$ev['courses'] = $event->courses;

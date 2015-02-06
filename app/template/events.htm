@@ -9,7 +9,7 @@
   <repeat group="{{ @events }}" value="{{ @event }}">
     <tr>
     <td>{{ @event.date }}</td>
-    <td><a href="{{ @event.link }}#{{ @event.eventid }}" target="_blank">{{ @event.name }}</a></td>
+    <td><a href="{{ @event.link }}#{{ @event.hasheventid }}" target="_blank">{{ @event.name }}</a></td>
     <td>{{ @event.club }}</td>
     <td>{{ @event.country }}</td>
     <td>{{ @event.courses }}</td>

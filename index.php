@@ -13,6 +13,8 @@ $f3->set('stats',$db->exec('SELECT * FROM stats ORDER BY id DESC LIMIT 1'));
 $f3->route('GET /', 'Event->getEventList');
 
 $f3->route('GET /events', 'Event->getEventList');
+$f3->route('GET /events/rss/@club', 'Event->getEventRSS');
+$f3->route('GET /events/rss', 'Event->getEventRSS');
 $f3->route('GET /sites', 'Site->getSiteList');
 $f3->route('GET /db', 'Db->updateDatabase');
 $f3->run();

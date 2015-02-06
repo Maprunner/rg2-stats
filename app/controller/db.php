@@ -11,13 +11,12 @@ public function __construct() {
 * read through list of known sites, poll the API and update our records
 * intended to be run as a cron job once a night
 */
-public function updateDatabase() {
+public function updateDatabase($f3) {
   if (php_sapi_name() !='cli') {
     echo 'Attempt to run db update from browser. This must be run as a cron job.';
     exit;
   }
   $logger = new Log(date('Y-m-d-H-i-s').'-db-update.log');
-  $f3 = \Base::instance();
   $db_file = $f3->get('db_file');
   $db_type = $f3->get('db_type');
   $db = new DB\SQL($db_type.':'.$db_file);
@@ -26,6 +25,8 @@ public function updateDatabase() {
   $db->exec('PRAGMA synchronous=OFF');
   $site = new DB\SQL\Mapper($db,'sites');
   $site->load(array(), array('order'=>'id ASC'));
+
+  $routeupdate = new DB\SQL\Mapper($db,'routes');
   
   // used to record which sites failed to return valid information on this pass
   $invalidsites = array();
@@ -57,10 +58,11 @@ public function updateDatabase() {
       foreach ($data->data as $event) {
         $dbrow = new DB\SQL\Mapper($db,'events');
         // try to get existing record for this event
-        $dbrow->load(array('siteid=? AND eventid=?', $site->id, $event->id));
+        $dbrow->load(array('siteid=? AND hasheventid=?', $site->id, $event->id));
+        $dbrow->id == NULL ? $newrecord = true : $newrecord = false;
         // update it or set up a new record
         $dbrow->siteid = $site->id;
-        $dbrow->eventid = $event->id;
+        $dbrow->hasheventid = $event->id;
         $dbrow->name = $f3->decode($event->name);
         // old API didn't set results etc so need to check first
         if (array_key_exists('results', $event)) {
@@ -73,7 +75,14 @@ public function updateDatabase() {
         } else {
           $dbrow->courses = 0;
         }
+        $newroutes = false;
         if (array_key_exists('routes', $event)) {
+          // check if new routes have been added since last poll
+          if (!$newrecord) {
+            if (($dbrow->routes) < ($event->routes)) {
+              $newroutes = true;
+            } 
+          }
           $dbrow->routes = $event->routes;
         } else {
           $dbrow->routes = 0;
@@ -83,13 +92,24 @@ public function updateDatabase() {
         // update or create record
         $dbrow->save();
         $count++;
+        // add new route record if necessary
+        if (($newrecord) || ($newroutes)) {
+          $routeupdate->eventid = $dbrow->id;
+          $routeupdate->name = $dbrow->name;
+          $routeupdate->siteid = $dbrow->siteid;
+          $routeupdate->hasheventid = $dbrow->hasheventid;
+          $routeupdate->routes = $dbrow->routes;
+          $routeupdate->updatetime = date('Y-m-d H:i:s');
+          $routeupdate->save();
+          $routeupdate->reset();
+        }
       }
+
       $logger->write($count.' records found for site '.$site->link);
     } else {
       array_push($invalidsites, $site->id);
       $logger->write('Invalid response for site '.$site->link);
     }
-
     $site->next();
   }
 

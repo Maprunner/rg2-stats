@@ -17,9 +17,7 @@ public function updateDatabase($f3) {
     exit;
   }
   $logger = new Log(date('Y-m-d-H-i-s').'-db-update.log');
-  $db_file = $f3->get('db_file');
-  $db_type = $f3->get('db_type');
-  $db = new DB\SQL($db_type.':'.$db_file);
+  $db = $f3->get("db.instance");
   
   // this speeds up UPDATEs from 120ms to 1ms
   $db->exec('PRAGMA synchronous=OFF');

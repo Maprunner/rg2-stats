@@ -11,9 +11,7 @@ public function __construct() {
 */
 public function getEventList($f3) {
 
-  $db_file = $f3->get('db_file');
-  $db_type = $f3->get('db_type');
-  $db = new DB\SQL($db_type.':'.$db_file);
+  $db = $f3->get("db.instance");
 
   $event = new DB\SQL\Mapper($db,'events');
   
@@ -21,25 +19,9 @@ public function getEventList($f3) {
   $event->link = 'SELECT link FROM sites WHERE events.siteid=sites.id';
   $event->country = 'SELECT country FROM sites WHERE events.siteid=sites.id';
        
-  $event->load(array(), array('order'=>'date DESC', 'limit'=>100));
-  
-  $eventdata = array();
-  $ev = array();
-  while (!$event->dry()) {
-    $ev['date'] = $event->date;
-    $ev['name'] = $event->name;
-    $ev['country'] = $event->country;
-    $ev['hasheventid'] = $event->hasheventid;
-    $ev['link'] = $event->link;
-    $ev['results'] = $event->results;
-    $ev['courses'] = $event->courses;
-    $ev['routes'] = $event->routes;
-    $ev['club'] = $event->club;
-    array_push($eventdata, $ev);
-    $event->next();
-  }
-  
-  $f3->set('events', $eventdata);
+  $events = $event->find(array(), array('order'=>'date DESC', 'limit'=>100));
+
+  $f3->set('events', $events);
   $f3->set('content','app/template/events.htm');
   echo Template::instance()->render('/app/template/page.htm');
 
@@ -47,36 +29,18 @@ public function getEventList($f3) {
 
 
 public function getEventRSS($f3, $args) {
-  $db_file = $f3->get('db_file');
-  $db_type = $f3->get('db_type');
-  $db = new DB\SQL($db_type.':'.$db_file);
+  $db = $f3->get("db.instance");
   $event = new DB\SQL\Mapper($db, 'events');
   $event->club = 'SELECT club FROM sites WHERE events.siteid=sites.id';
   $event->abbr = 'SELECT abbr FROM sites WHERE events.siteid=sites.id';
   $event->link = 'SELECT link FROM sites WHERE events.siteid=sites.id';
   $event->country = 'SELECT country FROM sites WHERE events.siteid=sites.id';
   if (isset($args['club'])) {
-    $event->load(array("abbr=?", $args['club']), array('order'=>'date DESC', 'limit'=>10));
+    $events = $event->find(array("abbr=?", $args['club']), array('order'=>'date DESC', 'limit'=>10));
   } else {
-    $event->load(array(), array('order'=>'date DESC', 'limit'=>10));
+    $events = $event->find(array(), array('order'=>'date DESC', 'limit'=>10));
   }
-  
-  $eventdata = array();
-  $ev = array();
-  while (!$event->dry()) {
-    $ev['date'] = $event->date;
-    $ev['name'] = $event->name;
-    //$ev['country'] = $event->country;
-    $ev['hasheventid'] = $event->hasheventid;
-    $ev['link'] = $event->link;
-    //$ev['results'] = $event->results;
-    //$ev['courses'] = $event->courses;
-    //$ev['routes'] = $event->routes;
-    $ev['club'] = $event->club;
-    array_push($eventdata, $ev);
-    $event->next();
-  }  
-  $f3->set('events', $eventdata);
+  $f3->set('events', $events);
 
   echo Template::instance()->render('app/template/events.rss', 'application/rss+xml');
 }

@@ -5,7 +5,8 @@ $(document).ready( function () {
 		'searching': false,
   "columnDefs": [
     { className: "dt-center", "targets": [1, 2, 3, 4, 5] },
-    { "width": "10%", "targets": 7 }
+    { "width": "10%", "targets": 7 },
+    { "orderable": false, "targets": 8 }
   ]
 	});
 

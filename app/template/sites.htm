@@ -4,7 +4,7 @@
   <div class="panel-heading">RG2 sites</div>
   <div class="panel-body">
   <table id='rg2-sites-table' class='display'><thead>
-  <tr><th>Club</th><th>Country</th><th>Events</th><th>Courses</th><th>Results</th><th>Routes</th><th>Latest event</th><th>Date</th></thead></tr>
+  <tr><th>Club</th><th>Country</th><th>Events</th><th>Courses</th><th>Results</th><th>Routes</th><th>Latest event</th><th>Date</th><th></th></thead></tr>
   <tbody>
   <repeat group="{{ @sites }}" value="{{ @site }}">
     <tr>
@@ -16,6 +16,7 @@
     <td>{{ @site.routes }}</td>
     <td><a href="{{ @site.link }}#{{ @site.latesthasheventid }}" target="_blank">{{@site.latesteventname}}</a></td>
     <td>{{ @site.latesteventdate }}</td>
+    <td><a href="events/rss/{{ @site.abbr }}" title="RSS feed for {{ @site.abbr }}" class="rssfeed">&nbsp;&nbsp;&nbsp;&nbsp;</a></td>
     </tr>
   </repeat>
   </tbody>

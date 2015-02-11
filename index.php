@@ -16,6 +16,6 @@ $f3->set("db.instance", $db);
 
 // get stats for footer
 
-$f3->set('stats',$db->exec('SELECT * FROM stats ORDER BY id DESC LIMIT 1'));
+$f3->set('stats',$db->exec('SELECT * FROM stats ORDER BY id DESC LIMIT 2'));
 
 $f3->run();

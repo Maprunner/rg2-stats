@@ -4,14 +4,14 @@
     <div class="col-md-4">
       <h3>Statistics</h3>
       <p>Last updated {{@stats[0].updated}}</p>
-        <div class="well well-sm"><strong> Sites:</strong>  {{@stats[0].sites}}</div>
-        <div class="well well-sm"><strong> Events:</strong>  {{@stats[0].events}}</div>
+        <div class="well well-sm"><strong> Sites:</strong> {{@stats[0].sites}}</div>
+        <div class="well well-sm"><strong> Events:</strong> {{@stats[0].events}} (+{{@stats[0].events - @stats[1].events}})</div>
     </div>
     <div class="col-md-4">
       <h3></h3>
-        <div class="well well-sm align-stats"><strong>Courses:</strong> {{@stats[0].courses}}</div>
-        <div class="well well-sm"><strong> Results:</strong>  {{@stats[0].results}}</div>
-        <div class="well well-sm"><strong> Routes:</strong>  {{@stats[0].routes}}</div>
+        <div class="well well-sm align-stats"><strong>Courses:</strong> {{@stats[0].courses}} (+{{@stats[0].courses - @stats[1].courses}})</div>
+        <div class="well well-sm"><strong> Results:</strong> {{@stats[0].results}} (+{{@stats[0].results - @stats[1].results}})</div>
+        <div class="well well-sm"><strong> Routes:</strong> {{@stats[0].routes}} (+{{@stats[0].routes - @stats[1].routes}})</div>
     </div>
     <div class="col-md-4">
       <h3>About</h3>

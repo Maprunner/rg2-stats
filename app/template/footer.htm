@@ -4,14 +4,14 @@
     <div class="col-md-4">
       <h3>Statistics</h3>
       <p>Last updated {{@stats[0].updated}}</p>
-        <div class="well well-sm"><strong> Sites:</strong> {{@stats[0].sites}}</div>
-        <div class="well well-sm"><strong> Events:</strong> {{@stats[0].events}} (+{{@stats[0].events - @stats[1].events}})</div>
+        <div class="well well-sm"><strong> Sites: {{@stats[0].sites}}</strong></div>
+        <div class="well well-sm"><strong> Events: {{@stats[0].events}}</strong><span class="float-right">(+{{@stats[0].events - @stats[1].events}} today, +{{@stats[0].events - @stats[6].events}} this week)</span></div>
     </div>
     <div class="col-md-4">
       <h3></h3>
-        <div class="well well-sm align-stats"><strong>Courses:</strong> {{@stats[0].courses}} (+{{@stats[0].courses - @stats[1].courses}})</div>
-        <div class="well well-sm"><strong> Results:</strong> {{@stats[0].results}} (+{{@stats[0].results - @stats[1].results}})</div>
-        <div class="well well-sm"><strong> Routes:</strong> {{@stats[0].routes}} (+{{@stats[0].routes - @stats[1].routes}})</div>
+        <div class="well well-sm align-stats"><strong>Courses: {{@stats[0].courses}}</strong><span class="float-right">(+{{@stats[0].courses - @stats[1].courses}} today, +{{@stats[0].courses - @stats[6].courses}} this week)</span></div>
+        <div class="well well-sm"><strong> Results:{{@stats[0].results}}</strong><span class="float-right">(+{{@stats[0].results - @stats[1].results}} today, +{{@stats[0].results - @stats[6].results}} this week)</span></div>
+        <div class="well well-sm"><strong> Routes: {{@stats[0].routes}}</strong><span class="float-right">(+{{@stats[0].routes - @stats[1].routes}} today, +{{@stats[0].routes - @stats[6].routes}} this week)</span></div>
     </div>
     <div class="col-md-4">
       <h3>About</h3>

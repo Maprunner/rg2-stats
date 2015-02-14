@@ -52,8 +52,14 @@ public function updateDatabase($f3) {
     }
     $count = 0;
     if ($validsite) {
+      if (array_key_exists("events", $data->data)) {
+        $events = $data->data->events;
+      } else {
+        $events = $data->data;
+      }
+        
       // read through each event in returned list
-      foreach ($data->data as $event) {
+      foreach ($events as $event) {
         $dbrow = new DB\SQL\Mapper($db,'events');
         // try to get existing record for this event
         $dbrow->load(array('siteid=? AND hasheventid=?', $site->id, $event->id));

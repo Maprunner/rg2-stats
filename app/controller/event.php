@@ -1,7 +1,7 @@
 <?php
 
 class Event {
-  
+
 public function __construct() {
 
 }
@@ -14,11 +14,11 @@ public function getEventList($f3) {
   $db = $f3->get("db.instance");
 
   $event = new DB\SQL\Mapper($db,'events');
-  
+
   $event->club = 'SELECT club FROM sites WHERE events.siteid=sites.id';
   $event->link = 'SELECT link FROM sites WHERE events.siteid=sites.id';
   $event->country = 'SELECT country FROM sites WHERE events.siteid=sites.id';
-       
+
   $events = $event->find(array(), array('order'=>'date DESC', 'limit'=>100));
 
   $f3->set('events', $events);
@@ -31,6 +31,7 @@ public function getEventList($f3) {
 public function getEventRSS($f3, $args) {
   $db = $f3->get("db.instance");
   $event = new DB\SQL\Mapper($db, 'events');
+  $name = $event->name;
   $event->club = 'SELECT club FROM sites WHERE events.siteid=sites.id';
   $event->abbr = 'SELECT abbr FROM sites WHERE events.siteid=sites.id';
   $event->link = 'SELECT link FROM sites WHERE events.siteid=sites.id';

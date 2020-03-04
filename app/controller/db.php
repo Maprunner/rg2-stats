@@ -92,6 +92,13 @@ public function updateDatabase($f3) {
           $dbrow->routes = 0;
         }
         $dbrow->date = $event->date;
+
+        // georeferenced events return A, B, C, D, E and F from world file
+        if (array_key_exists('A', $event)) {
+          $dbrow->georef = 1;
+        } else {
+          $dbrow->georef = 0;
+        }
         $dbrow->updatetime = date('Y-m-d H:i:s');
         // update or create record
         $dbrow->save();

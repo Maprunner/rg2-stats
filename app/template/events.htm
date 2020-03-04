@@ -1,24 +1,38 @@
 <div class="container">
-</p>
-<div class="panel panel-primary">
-  <div class="panel-heading">RG2: 100 most recent events</div>
-  <div class="panel-body">
-  <table id='rg2-events-table' class='display'><thead>
-  <tr><th>Date</th><th>Event</th><th>Club</th><th>Nat</th><th>Courses</th><th>Results</th><th>Routes</th></thead></tr>
-  <tbody>
-  <repeat group="{{ @events }}" value="{{ @event }}">
-    <tr>
-    <td>{{ @event.date }}</td>
-    <td><a href="{{ @event.link }}#{{ @event.hasheventid }}" target="_blank">{{ @event.name }}</a></td>
-    <td>{{ @event.club }}</td>
-    <td>{{ @event.country }}</td>
-    <td>{{ @event.courses }}</td>
-    <td>{{ @event.results }}</td>
-    <td>{{ @event.routes }}</td>
-    </tr>
-  </repeat>
-  </tbody>
-  </table>
+  </p>
+  <div class="panel panel-primary">
+    <div class="panel-heading">RG2: 100 most recent events</div>
+    <div class="panel-body">
+      <table id='rg2-events-table' class='display'>
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th></th>
+            <th>Event</th>
+            <th>Club</th>
+            <th>Nat</th>
+            <th>Courses</th>
+            <th>Results</th>
+            <th>Routes</th>
+        </thead>
+        </tr>
+        <tbody>
+          <repeat group="{{ @events }}" value="{{ @event }}">
+            <tr>
+              <td>{{ @event.date }}</td>
+              <td {{ @event.georef === 1 ? "class='georef'": "" }}>
+                {{ @event.georef === 1 ? "<img src='img/globe-24.png'></img>": "" }}
+              </td>
+              <td><a href="{{ @event.link }}#{{ @event.hasheventid }}" target="_blank">{{ @event.name }}</a></td>
+              <td>{{ @event.club }}</td>
+              <td>{{ @event.country }}</td>
+              <td>{{ @event.courses }}</td>
+              <td>{{ @event.results }}</td>
+              <td>{{ @event.routes }}</td>
+            </tr>
+          </repeat>
+        </tbody>
+      </table>
+    </div>
   </div>
-</div>
 </div>

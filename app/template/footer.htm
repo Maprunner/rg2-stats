@@ -1,27 +1,38 @@
 <div class="footer">
-<footer class="container">
-  <div class="row">
-    <div class="col-md-4">
-      <h3>Statistics</h3>
-      <p>Last updated {{@stats[0].updated}}</p>
+  <footer class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <h3>Statistics</h3>
+        <p>Last updated {{@stats[0].updated}}</p>
         <div class="well well-sm"><strong> Sites: {{@stats[0].sites}}</strong></div>
-        <div class="well well-sm"><strong> Events: {{number_format(@stats[0].events, 0, ".", ",")}}</strong><span class="float-right">({{@stats[0].events - @stats[1].events}} today, {{@stats[0].events - @stats[6].events}} this week)</span></div>
+        <div class="well well-sm"><strong> Events: {{number_format(@stats[0].events, 0, ".", ",")}}</strong><span
+            class="float-right">({{@stats[0].events - @stats[1].events}} today, {{@stats[0].events - @stats[6].events}}
+            this week)</span></div>
+      </div>
+      <div class="col-md-4">
+        <h3></h3>
+        <div class="well well-sm align-stats"><strong>Courses:
+            {{number_format(@stats[0].courses, 0, ".", ",")}}</strong><span
+            class="float-right">({{@stats[0].courses - @stats[1].courses}} today,
+            {{@stats[0].courses - @stats[6].courses}} this week)</span></div>
+        <div class="well well-sm"><strong> Results: {{number_format(@stats[0].results, 0, ".", ",")}}</strong><span
+            class="float-right">({{number_format(@stats[0].results - @stats[1].results, 0, ".", ",")}} today,
+            {{number_format(@stats[0].results - @stats[6].results, 0, ".", ",")}} this week)</span></div>
+        <div class="well well-sm"><strong> Routes: {{number_format(@stats[0].routes, 0, ".", ",")}}</strong><span
+            class="float-right">({{number_format(@stats[0].routes - @stats[1].routes, 0, ".", ",")}} today,
+            {{number_format(@stats[0].routes - @stats[6].routes, 0, ".", ",")}} this week)</span></div>
+      </div>
+      <div class="col-md-4">
+        <h3>About</h3>
+        <p>Routegadget is a web-based tool that allows you to draw or upload the route that you took at an orienteering
+          event and compare it with other people.
+          This site provides a summary of RG2 installations. The RG2 software is free and open source. For further
+          details see the
+          <a href="https://github.com/Maprunner/rg2">Github site</a>.</p>
+        <p>Copyright © 2020 <a href="http://www.maprunner.co.uk">Maprunner</a>.</p>
+      </div>
     </div>
-    <div class="col-md-4">
-      <h3></h3>
-        <div class="well well-sm align-stats"><strong>Courses: {{number_format(@stats[0].courses, 0, ".", ",")}}</strong><span class="float-right">({{@stats[0].courses - @stats[1].courses}} today, {{@stats[0].courses - @stats[6].courses}} this week)</span></div>
-        <div class="well well-sm"><strong> Results: {{number_format(@stats[0].results, 0, ".", ",")}}</strong><span class="float-right">({{number_format(@stats[0].results - @stats[1].results, 0, ".", ",")}} today, {{number_format(@stats[0].results - @stats[6].results, 0, ".", ",")}} this week)</span></div>
-        <div class="well well-sm"><strong> Routes: {{number_format(@stats[0].routes, 0, ".", ",")}}</strong><span class="float-right">({{number_format(@stats[0].routes - @stats[1].routes, 0, ".", ",")}} today, {{number_format(@stats[0].routes - @stats[6].routes, 0, ".", ",")}} this week)</span></div>
-    </div>
-    <div class="col-md-4">
-      <h3>About</h3>
-      <p>Routegadget is a web-based tool that allows you to draw or upload the route that you took at an orienteering event and compare it with other people.
-      	This site provides a summary of RG2 installations. The RG2 software is free and open source. For further details see the
-      	<a href="https://github.com/Maprunner/rg2">Github site</a>.</p>
-      <p>Copyright © 2015 <a href="http://www.maprunner.co.uk">Maprunner</a>.</p>
-    </div>
-  </div>
-</footer>
+  </footer>
 </div>
 <script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
@@ -29,4 +40,5 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <script src="js/rg2-stats.js?<?php echo filemtime('js/rg2-stats.js'); ?>"></script>
 </body>
+
 </html>

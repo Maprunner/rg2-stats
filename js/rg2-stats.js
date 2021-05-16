@@ -15,7 +15,7 @@ $(document).ready( function () {
 		'order': [ 0, 'desc' ],
 		'searching': false,
   "columnDefs": [
-    { className: "dt-center", "targets": [3, 4, 5, 6] },
+    { className: "dt-center", "targets": [4, 5, 6, 7] },
     { "width": "10%", "targets": 0 }
   ]		
 	});

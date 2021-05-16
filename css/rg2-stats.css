@@ -3,6 +3,11 @@ body {
   padding-bottom: 20px;
 }
 
+a {
+  color: #1e476b;
+  font-weight:bold;
+}
+
 .brandname {
   float: left;
   height: 50px;

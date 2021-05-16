@@ -8,13 +8,13 @@
   <tbody>
   <repeat group="{{ @sites }}" value="{{ @site }}">
     <tr>
-    <td><a href="{{ @site.link }}" target="_blank">{{ @site.club }}</a></td>
+    <td><a href="{{ @site.link }}" target="_blank" rel="noopener">{{ @site.club }}</a></td>
     <td>{{ @site.country }}</td>
     <td>{{ @site.events }}</td>
     <td>{{ @site.courses }}</td>
     <td>{{ @site.results }}</td>
     <td>{{ @site.routes }}</td>
-    <td><a href="{{ @site.link }}#{{ @site.latesthasheventid }}" target="_blank">{{@site.latesteventname}}</a></td>
+    <td><a href="{{ @site.link }}#{{ @site.latesthasheventid }}" target="_blank" rel="noopener">{{@site.latesteventname}}</a></td>
     <td>{{ @site.latesteventdate }}</td>
     <td><a href="events/rss/{{ @site.abbr }}" title="RSS feed for {{ @site.abbr }}" class="rssfeed">&nbsp;&nbsp;&nbsp;&nbsp;</a></td>
     </tr>

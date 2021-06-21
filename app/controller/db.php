@@ -52,7 +52,7 @@ public function updateDatabase($f3) {
     }
     $count = 0;
     if ($validsite) {
-      if (array_key_exists("events", $data->data)) {
+      if (property_exists($data->data, "events")) {
         $events = $data->data->events;
       } else {
         $events = $data->data;
@@ -69,18 +69,18 @@ public function updateDatabase($f3) {
         $dbrow->hasheventid = $event->id;
         $dbrow->name = $f3->decode($event->name);
         // old API didn't set results etc so need to check first
-        if (array_key_exists('results', $event)) {
+        if (property_exists($event, 'results')) {
           $dbrow->results = $event->results;
         } else {
           $dbrow->results = 0;
         }
-        if (array_key_exists('courses', $event)) {
+        if (property_exists($event, 'courses')) {
           $dbrow->courses = $event->courses;
         } else {
           $dbrow->courses = 0;
         }
         $newroutes = false;
-        if (array_key_exists('routes', $event)) {
+        if (property_exists($event, 'routes')) {
           // check if new routes have been added since last poll
           if (!$newrecord) {
             if (($dbrow->routes) < ($event->routes)) {
@@ -94,7 +94,7 @@ public function updateDatabase($f3) {
         $dbrow->date = $event->date;
 
         // georeferenced events return A, B, C, D, E and F from world file
-        if (array_key_exists('A', $event)) {
+        if (property_exists($event, 'A')) {
           $dbrow->georef = 1;
         } else {
           $dbrow->georef = 0;

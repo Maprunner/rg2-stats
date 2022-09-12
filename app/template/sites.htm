@@ -14,7 +14,7 @@
     <td>{{ @site.courses }}</td>
     <td>{{ @site.results }}</td>
     <td>{{ @site.routes }}</td>
-    <td><a href="{{ @site.link }}#{{ @site.latesthasheventid }}" target="_blank" rel="noopener">{{@site.latesteventname}}</a></td>
+    <td><a href="{{ @site.link }}#{{ @site.latesthasheventid }}" target="_blank" rel="noopener">{{@site.latesteventname | raw}}</a></td>
     <td>{{ @site.latesteventdate }}</td>
     <td><a href="events/rss/{{ @site.abbr }}" title="RSS feed for {{ @site.abbr }}" class="rssfeed">&nbsp;&nbsp;&nbsp;&nbsp;</a></td>
     </tr>

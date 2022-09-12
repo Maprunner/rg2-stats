@@ -23,7 +23,7 @@
               <td {{ @event.georef === 1 ? "class='georef'": "" }}>
                 {{ @event.georef === 1 ? "<img alt='globe' src='img/globe-24.png'></img>": "" }}
               </td>
-              <td><a href="{{ @event.link }}#{{ @event.hasheventid }}" target="_blank" rel="noopener">{{ @event.name }}</a></td>
+              <td><a href="{{ @event.link }}#{{ @event.hasheventid }}" target="_blank" rel="noopener">{{ @event.name | raw}}</a></td>
               <td>{{ @event.club }}</td>
               <td>{{ @event.country }}</td>
               <td>{{ @event.courses }}</td>

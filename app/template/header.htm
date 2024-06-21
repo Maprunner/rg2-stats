@@ -1,15 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>RG2 Statistics</title>
-  <meta name="description" content="A Summary of Routegadget 2 installations">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A Summary of Routegadget 2 installations" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="shortcut icon" href="img/favicon.ico" />
-  <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css">
-  <link rel="stylesheet" href="css/rg2-stats.css?<?php echo filemtime('css/rg2-stats.css'); ?>">
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+    crossorigin="anonymous"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdn.datatables.net/2.0.8/css/dataTables.bootstrap5.min.css"
+  />
+  <link rel="stylesheet" href="css/rg2-stats.css?{{ @cachebust }}" />
 </head>
-<body>

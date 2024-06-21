@@ -1,23 +1,6 @@
-body {
-  padding-top: 50px;
-  padding-bottom: 20px;
-}
-
 a {
   color: #1e476b;
-  font-weight:bold;
-}
-
-.brandname {
-  float: left;
-  height: 50px;
-  padding: 8px 0px 0px 0px;
-  font-size: 24px;
-  color: white;
-}
-
-.logo {
-  padding: 0px 10px 0px 0px;
+  font-weight: bold;
 }
 
 .footer {
@@ -27,20 +10,7 @@ a {
   box-shadow: 0px 500px 0px 500px #ddd;
 }
 
-.float-right {
-  float: right;
-}
-
 .rssfeed {
-  margin-left: 3px;
   background: url("../img/feed-icon-14x14.png") no-repeat 0 50%;
-} 
-
-.align-stats {
-  padding-top: 15px;
-}
-
-.globe {
-  padding: 0px;
-  margin: 0px;
+  text-decoration: none;
 }

@@ -1,9 +1,8 @@
-<div class="container">
-  </p>
-  <div class="panel panel-primary">
-    <div class="panel-heading">RG2: 100 most recent events</div>
-    <div class="panel-body">
-      <table id='rg2-events-table' class='display'>
+<div class="container my-3">
+  <div class="card border-black">
+    <h4 class="card-header bg-warning">RG2: 100 most recent events</h4>
+    <div class="card-body">
+      <table id='rg2-events-table' class="table table-striped" style="width:100%">
         <thead>
           <tr>
             <th>Date</th>
@@ -14,14 +13,14 @@
             <th>Courses</th>
             <th>Results</th>
             <th>Routes</th>
+          </tr>
         </thead>
-        </tr>
         <tbody>
           <repeat group="{{ @events }}" value="{{ @event }}">
             <tr>
               <td>{{ @event.date }}</td>
               <td {{ @event.georef === 1 ? "class='georef'": "" }}>
-                {{ @event.georef === 1 ? "<img alt='globe' src='img/globe-24.png'></img>": "" }}
+                {{ @event.georef === 1 ? "<img alt='globe' src='img/globe-24.png' />": "" }}
               </td>
               <td><a href="{{ @event.link }}#{{ @event.hasheventid }}" target="_blank" rel="noopener">{{ @event.name | raw}}</a></td>
               <td>{{ @event.club }}</td>

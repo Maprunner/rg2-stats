@@ -1,30 +1,31 @@
 <?php
 
-class Site {
-  
-public function __construct() {
+class Site
+{
 
-}
+  public function __construct()
+  {
+  }
 
-/*
+  /*
 * display a list of sites
 */
-public function getSiteList($f3) {
+  public function getSiteList($f3)
+  {
 
-  $db = $f3->get("db.instance");
-  $site = new DB\SQL\Mapper($db,'sites');
-  
-  $site->latesthasheventid = 'SELECT hasheventid FROM events WHERE events.siteid=sites.id ORDER BY date DESC LIMIT 1';
-  $site->latesteventname = 'SELECT name FROM events WHERE events.siteid=sites.id ORDER BY date DESC LIMIT 1';
-  $site->latesteventdate = 'SELECT date FROM events WHERE events.siteid=sites.id ORDER BY date DESC LIMIT 1';
-    
-  $sites = $site->find();
+    $db = $f3->get("db.instance");
+    $site = new DB\SQL\Mapper($db, 'sites');
 
-  $f3->set('sites', $sites);
-  $f3->set('content','app/template/sites.htm');
+    $site->latesthasheventid = 'SELECT hasheventid FROM events WHERE events.siteid=sites.id ORDER BY date DESC LIMIT 1';
+    $site->latesteventname = 'SELECT name FROM events WHERE events.siteid=sites.id ORDER BY date DESC LIMIT 1';
+    $site->latesteventdate = 'SELECT date FROM events WHERE events.siteid=sites.id ORDER BY date DESC LIMIT 1';
 
-  echo Template::instance()->render('/app/template/page.htm');
+    $sites = $site->find();
 
-}
-
+    $f3->set('sites', $sites);
+    $f3->set('content', 'app/template/sites.htm');
+    $f3->set('year', date("Y"));
+    $f3->set('cachebust', filemtime('css/rg2-stats.css'));
+    echo Template::instance()->render('/app/template/page.htm');
+  }
 }

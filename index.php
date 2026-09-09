@@ -5,7 +5,9 @@ $s = $f3->get('SERVER');
 if (strpos($s['SERVER_NAME'], 'localhost') !== FALSE) {
   $f3->set('DEBUG', 3);
 } else {
-  $f3->set('DEBUG', 0);
+  // temporary fix for debugging server
+  //$f3->set('DEBUG', 0);
+  $f3->set('DEBUG', 3);
 }
 
 $f3->config('rg2-stats.ini');

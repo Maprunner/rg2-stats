@@ -39,7 +39,7 @@ public function updateDatabase($f3) {
 	  ]
   );
   // read through each site
-  while (!$site->dry() && count($invalidsites) < 2) {
+  while (!$site->dry()) {
     try {
       $validsite = true;
       // $web = new Web;
